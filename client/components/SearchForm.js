@@ -7,7 +7,8 @@ export default class SearchForm extends Component {
     super(props)
     this.state = {
       brand: '',
-      description: ''
+      description: '',
+      size: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -32,8 +33,9 @@ export default class SearchForm extends Component {
 
     //reset the form to be blank
     this.setState({
-      taskName : '',
-      assignee: ''
+      brand : '',
+      description: '',
+      size: ''
     })
   }
 
@@ -45,8 +47,11 @@ export default class SearchForm extends Component {
         <label htmlFor="description">What are you looking for?</label>
         <input type="text" name="description" value={this.state.description} onChange={this.handleChange}/>
 
-        <label htmlFor="brand">Brand:</label>
+        <label htmlFor="brand">Search by brand:</label>
         <input type="text" name="brand" value={this.state.brand} onChange={this.handleChange}/>
+
+        <label htmlFor="size">Search by size:</label>
+        <input type="text" name="size" value={this.state.size} onChange={this.handleChange}/>
 
         
 

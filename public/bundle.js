@@ -38846,7 +38846,8 @@ var SearchForm = function (_Component) {
 
     _this.state = {
       brand: '',
-      description: ''
+      description: '',
+      size: ''
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
@@ -38872,8 +38873,9 @@ var SearchForm = function (_Component) {
 
       //reset the form to be blank
       this.setState({
-        taskName: '',
-        assignee: ''
+        brand: '',
+        description: '',
+        size: ''
       });
     }
   }, {
@@ -38891,9 +38893,15 @@ var SearchForm = function (_Component) {
         _react2.default.createElement(
           'label',
           { htmlFor: 'brand' },
-          'Brand:'
+          'Search by brand:'
         ),
         _react2.default.createElement('input', { type: 'text', name: 'brand', value: this.state.brand, onChange: this.handleChange }),
+        _react2.default.createElement(
+          'label',
+          { htmlFor: 'size' },
+          'Search by size:'
+        ),
+        _react2.default.createElement('input', { type: 'text', name: 'size', value: this.state.size, onChange: this.handleChange }),
         _react2.default.createElement(
           'button',
           { type: 'submit' },
