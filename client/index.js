@@ -13,7 +13,6 @@ ReactDOM.render(
   //<Provider store={store}>
     //<Router history={history}>
       <App />,
-      // <div id='form'>Form will go here!</div>,
     //</Router>
   //</Provider>,
   document.getElementById('app')
