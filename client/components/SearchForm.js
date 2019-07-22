@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import Axios from 'axios';
+import Axios from 'axios';
 // import {connect} from 'react-redux'
 
 export default class SearchForm extends Component {
@@ -27,9 +27,16 @@ export default class SearchForm extends Component {
     console.log('handling submit')
     console.log('state is now ', this.state)
     event.preventDefault()
-    //const addTodo = this.props.addTodo
 
-    //const res = await Axios.post('/api/todos', this.state)
+    const search = this.state
+    console.log('search is ', search)
+    
+    // the handle submit needs to call the backend route that asks for the web data
+    // you're going to need axios and it's going to look something like this:
+    // await Axios.post('/send', data)
+    // except it will probably be a get route and not a post
+
+    const data = Axios.post('/getItems', search)
 
     //reset the form to be blank
     this.setState({

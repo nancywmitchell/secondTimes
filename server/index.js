@@ -18,6 +18,14 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 //app.use('/api', require('./api')) // include our routes!
 
+// this is the route that is going to get the stuff from the thing
+app.post('/getItems', (req, res, next) => {
+  console.log('oh look you called the route')
+  console.log('request body ', req.body)
+
+  res.send('yay')
+})
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 }) // Send index.html for any other requests
