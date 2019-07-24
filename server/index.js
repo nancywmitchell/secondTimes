@@ -3,6 +3,7 @@
 const express = require('express')
 const path = require('path')
 const volleyball = require('volleyball')
+const poshmark = require('../poshmark')
 
 const app = express()
 
@@ -19,11 +20,19 @@ app.use(express.static(path.join(__dirname, '../public')))
 //app.use('/api', require('./api')) // include our routes!
 
 // this is the route that is going to get the stuff from the thing
-app.post('/getItems', (req, res, next) => {
+app.post('/getItems', async (req, res, next) => {
   console.log('oh look you called the route')
   console.log('request body ', req.body)
 
-  res.send('yay')
+  let brand = req.body.brand
+  console.log('brand is ', brand)
+  let description = req.body.description
+  console.log('description is ', description)
+
+  let data = await poshmark(brand, description)
+  console.log(data)
+
+  res.send(data)
 })
 
 app.get('*', (req, res) => {

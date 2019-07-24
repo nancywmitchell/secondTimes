@@ -38,7 +38,7 @@ export default class SearchForm extends Component {
 
     const data = Axios.post('/getItems', search)
 
-    //reset the form to be blank
+    // reset the form to be blank
     this.setState({
       brand : '',
       description: '',

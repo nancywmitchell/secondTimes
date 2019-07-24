@@ -39564,7 +39564,7 @@ var SearchForm = function (_Component) {
 
       var data = _axios2.default.post('/getItems', search);
 
-      //reset the form to be blank
+      // reset the form to be blank
       this.setState({
         brand: '',
         description: '',
