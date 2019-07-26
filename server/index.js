@@ -30,7 +30,7 @@ app.post('/getItems', async (req, res, next) => {
   console.log('description is ', description)
 
   let data = await poshmark(brand, description)
-  console.log(data)
+  // console.log(data)
 
   res.send(data)
 })

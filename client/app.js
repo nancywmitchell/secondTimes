@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchForm from './components/SearchForm'
+import ParentComponent from './components/ParentComponent'
 //import SearchResults from './components/SearchResults'
 
 //import {Navbar} from './components'
@@ -11,7 +12,8 @@ const App = () => {
   return (
     <div>
         <h1>Title of the Song</h1>
-        <SearchForm />
+        <ParentComponent />
+        {/* <SearchForm /> */}
         {/* <SearchResults /> */}
     </div>
   )

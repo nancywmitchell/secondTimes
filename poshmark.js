@@ -9,6 +9,8 @@ module.exports = async function poshmark(brand, description, size) {
     // it needs to take in the brand, description, and size and replace any spaces in the 
     // descriptions with pluses
     // sounds like a job for a regular expression
+    brand = brand.replace(/[\s,]+/, "+")
+    description = description.replace(/[\s,]+/, "+")
 
     const url = `https://poshmark.com/search?query=${brand}+${description}`
     console.log('url is ', url)

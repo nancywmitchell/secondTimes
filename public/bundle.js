@@ -39465,6 +39465,10 @@ var _SearchForm = __webpack_require__(382);
 
 var _SearchForm2 = _interopRequireDefault(_SearchForm);
 
+var _ParentComponent = __webpack_require__(402);
+
+var _ParentComponent2 = _interopRequireDefault(_ParentComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import SearchResults from './components/SearchResults'
@@ -39483,7 +39487,7 @@ var App = function App() {
       null,
       'Title of the Song'
     ),
-    _react2.default.createElement(_SearchForm2.default, null)
+    _react2.default.createElement(_ParentComponent2.default, null)
   );
 };
 
@@ -39511,6 +39515,8 @@ var _axios = __webpack_require__(383);
 var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -39549,28 +39555,59 @@ var SearchForm = function (_Component) {
     }
   }, {
     key: 'handleSubmit',
-    value: function handleSubmit(event) {
-      console.log('handling submit');
-      console.log('state is now ', this.state);
-      event.preventDefault();
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+        var search, data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log('handling submit');
+                console.log('state is now ', this.state);
+                event.preventDefault();
 
-      var search = this.state;
-      console.log('search is ', search);
+                search = this.state;
 
-      // the handle submit needs to call the backend route that asks for the web data
-      // you're going to need axios and it's going to look something like this:
-      // await Axios.post('/send', data)
-      // except it will probably be a get route and not a post
+                console.log('search is ', search);
 
-      var data = _axios2.default.post('/getItems', search);
+                // the handle submit needs to call the backend route that asks for the web data
+                // you're going to need axios and it's going to look something like this:
+                // await Axios.post('/send', data)
+                // except it will probably be a get route and not a post
 
-      // reset the form to be blank
-      this.setState({
-        brand: '',
-        description: '',
-        size: ''
-      });
-    }
+                _context.next = 7;
+                return _axios2.default.post('/getItems', search);
+
+              case 7:
+                data = _context.sent;
+
+                console.log(data);
+
+                // maybe like... as the data comes in send it to a separate component to be rendered?
+                // but how do you do that?
+                // you could use REDUX
+
+                // reset the form to be blank
+                this.setState({
+                  brand: '',
+                  description: '',
+                  size: ''
+                });
+
+              case 10:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function handleSubmit(_x) {
+        return _ref.apply(this, arguments);
+      }
+
+      return handleSubmit;
+    }()
   }, {
     key: 'render',
     value: function render() {
@@ -40496,6 +40533,141 @@ module.exports = function spread(callback) {
   };
 };
 
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(31);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _axios = __webpack_require__(383);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _SearchForm = __webpack_require__(382);
+
+var _SearchForm2 = _interopRequireDefault(_SearchForm);
+
+var _SearchResults = __webpack_require__(403);
+
+var _SearchResults2 = _interopRequireDefault(_SearchResults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ParentComponent = function (_Component) {
+    _inherits(ParentComponent, _Component);
+
+    function ParentComponent(props) {
+        _classCallCheck(this, ParentComponent);
+
+        var _this = _possibleConstructorReturn(this, (ParentComponent.__proto__ || Object.getPrototypeOf(ParentComponent)).call(this, props));
+
+        _this.addStuff = function (stuff) {
+            _this.setState({ items: stuff });
+        };
+
+        _this.state = {
+            items: ''
+
+            // this might not be necessary
+        };_this.addStuff = _this.addStuff.bind(_this);
+
+        return _this;
+    }
+
+    _createClass(ParentComponent, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_SearchForm2.default, { addStuff: this.addStuff }),
+                _react2.default.createElement(_SearchResults2.default, null)
+            );
+        }
+    }]);
+
+    return ParentComponent;
+}(_react.Component);
+
+exports.default = ParentComponent;
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(31);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _axios = __webpack_require__(383);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ParentComponent = function (_Component) {
+    _inherits(ParentComponent, _Component);
+
+    function ParentComponent(props) {
+        _classCallCheck(this, ParentComponent);
+
+        var _this = _possibleConstructorReturn(this, (ParentComponent.__proto__ || Object.getPrototypeOf(ParentComponent)).call(this, props));
+
+        _this.state = {
+            items: ''
+        };
+
+        return _this;
+    }
+
+    _createClass(ParentComponent, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                'Search Results Will Go Here!'
+            );
+        }
+    }]);
+
+    return ParentComponent;
+}(_react.Component);
+
+exports.default = ParentComponent;
 
 /***/ })
 /******/ ]);

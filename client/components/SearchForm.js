@@ -23,7 +23,7 @@ export default class SearchForm extends Component {
 
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     console.log('handling submit')
     console.log('state is now ', this.state)
     event.preventDefault()
@@ -36,7 +36,12 @@ export default class SearchForm extends Component {
     // await Axios.post('/send', data)
     // except it will probably be a get route and not a post
 
-    const data = Axios.post('/getItems', search)
+    const data = await Axios.post('/getItems', search)
+    console.log(data)
+
+    // maybe like... as the data comes in send it to a separate component to be rendered?
+    // but how do you do that?
+    // you could use REDUX
 
     // reset the form to be blank
     this.setState({
