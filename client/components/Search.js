@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 import SearchForm from './SearchForm'
+import ItemCard from './ItemCard'
 
 export default class Search extends Component {
     constructor (props) {
@@ -36,9 +37,9 @@ export default class Search extends Component {
             return (
             <div>
                 <SearchForm addStuff={this.addStuff}/>
-                {this.state.items.map(item => {
-                    return (<li>{item.title}</li>)
-                })}
+                {this.state.items.map(item => (
+                    <ItemCard item={item}/>
+                ))}
             </div>
         )
         }

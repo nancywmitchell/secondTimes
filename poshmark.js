@@ -29,7 +29,7 @@ module.exports = async function poshmark(brand, description, size) {
                 brand: object.attribs['data-post-brand'],
                 price: object.attribs['data-post-price'],
                 size: object.attribs['data-post-size'],
-                url: object.children[0].attribs.href,
+                url: "https://poshmark.com/" + object.children[0].attribs.href,
                 imgUrl: object.firstChild.firstChild.attribs['src']
             })
         )
