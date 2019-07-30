@@ -25,9 +25,7 @@ app.post('/getItems', async (req, res, next) => {
   console.log('request body ', req.body)
 
   let brand = req.body.brand
-  console.log('brand is ', brand)
   let description = req.body.description
-  console.log('description is ', description)
 
   let data = await poshmark(brand, description)
   // console.log(data)
