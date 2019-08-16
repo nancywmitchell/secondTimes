@@ -1,6 +1,7 @@
 const rp = require('request-promise')
 const $ = require('cheerio')
 
+// this one is using cheerio, which is different from the headless browser thing
 // we need to make this into a function that will accept things like brand, description, size
 // the url will need to look something like this: 
 // const url = 'https://poshmark.com/search?query=gucci+pumps+green+7'

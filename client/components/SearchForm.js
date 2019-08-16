@@ -36,10 +36,18 @@ export default class SearchForm extends Component {
     // await Axios.post('/send', data)
     // except it will probably be a get route and not a post
 
+    try {
     const items = await Axios.post('/getItems', search)
-    console.log(items)
+    // console.log(items)
 
+    // this adds the stuff that's returned to the search
+    // if you want this to be outside the try block you need to declare items outside the catch block
     this.props.addStuff(items.data)
+
+    }
+    catch(error) {
+    console.log('error is ', error)
+    }
 
     // reset the form to be blank
     this.setState({

@@ -39537,11 +39537,17 @@ var Search = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
 
         _this.addStuff = function (stuff) {
-            var newStuff = void 0;
-            if (_this.state.items) {
-                newStuff = _this.state.items.concat(stuff);
-            } else newStuff = stuff;
-            _this.setState({ items: newStuff });
+            // let newStuff
+
+            // // why are we concatenating here?
+            // // I guess it's like, when you want to return things as they come back from sites one at a time
+            // if (this.state.items) {
+            //     newStuff = this.state.items.concat(stuff)
+            // }
+            // else newStuff = stuff
+            // this.setState({items: newStuff})
+
+            _this.setState({ items: stuff });
         };
 
         _this.state = {
@@ -40545,15 +40551,29 @@ var SearchForm = function (_Component) {
                 // await Axios.post('/send', data)
                 // except it will probably be a get route and not a post
 
-                _context.next = 7;
+                _context.prev = 5;
+                _context.next = 8;
                 return _axios2.default.post('/getItems', search);
 
-              case 7:
+              case 8:
                 items = _context.sent;
 
-                console.log(items);
+                // console.log(items)
 
+                // this adds the stuff that's returned to the search
+                // if you want this to be outside the try block you need to declare items outside the catch block
                 this.props.addStuff(items.data);
+
+                _context.next = 15;
+                break;
+
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context['catch'](5);
+
+                console.log('error is ', _context.t0);
+
+              case 15:
 
                 // reset the form to be blank
                 this.setState({
@@ -40562,12 +40582,12 @@ var SearchForm = function (_Component) {
                   size: ''
                 });
 
-              case 11:
+              case 16:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[5, 12]]);
       }));
 
       function handleSubmit(_x) {

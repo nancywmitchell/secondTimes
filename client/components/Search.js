@@ -16,12 +16,17 @@ export default class Search extends Component {
       }
 
     addStuff = (stuff) => {
-        let newStuff
-        if (this.state.items) {
-            newStuff = this.state.items.concat(stuff)
-        }
-        else newStuff = stuff
-        this.setState({items: newStuff})
+        // let newStuff
+
+        // // why are we concatenating here?
+        // // I guess it's like, when you want to return things as they come back from sites one at a time
+        // if (this.state.items) {
+        //     newStuff = this.state.items.concat(stuff)
+        // }
+        // else newStuff = stuff
+        // this.setState({items: newStuff})
+
+        this.setState({items: stuff})
     }
 
     render() {
