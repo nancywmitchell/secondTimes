@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.3",
-    "jsdom": "^15.0.0",
+    "jsdom": "^16.5.0",
     "nodemon": "^1.18.11",
     "puppeteer": "^1.15.0",
     "react": "^16.8.6",
